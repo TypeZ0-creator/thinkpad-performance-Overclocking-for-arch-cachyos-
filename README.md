@@ -23,5 +23,7 @@ cd thinkpad-performance-governor-for-arch-cachyos-
 chmod +x perf_toggle.sh
 sudo ./perf_toggle.sh
 ```
+copy this to see it worked
+watch -n 0.5 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 
 

@@ -26,4 +26,33 @@ sudo ./perf_toggle.sh
 copy this to see it worked
 watch -n 0.5 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 
+---
+
+## 🔍 How to Verify the Unlocked Overclock Mode
+
+Because Intel CPUs scale down dynamically when sitting idle to save power, you must monitor your hardware while running a short workload to verify that the restriction is lifted.
+
+### Step 1: Open a Live Clock Speed Monitor
+Open a terminal window and run this command to watch your raw CPU core frequencies update live every 0.5 seconds:
+```bash
+watch -n 0.5 "grep \"^[c]pu MHz\" /proc/cpuinfo"
+```
+
+### Step 2: Trigger a Hardware Workload
+Open a second terminal window, select **Option 3 (OVERCLOCK MODE)** in the script, and install a lightweight stress tool:
+```bash
+sudo pacman -S stress
+```
+Now, force a heavy math load across all 8 processing threads for 15 seconds:
+```bash
+stress --cpu 8 --timeout 15
+```
+
+### Step 3: Analyze the Outputs
+While the stress test runs, look back at your first monitoring window. Your profile is verified as successful if:
+1. **The 2.0 GHz Ceiling is Broken:** All 8 threads instantly surge well past 2000 MHz, maintaining heavy all-core target clocks between **3800 MHz and 4200 MHz**.
+2. **No Low Drop Valleys:** The notorious Lenovo 400 MHz micro-stutter valleys are completely eliminated.
+3. **Register Level Confirmation:** Run `sudo rdmsr -a 0x1FC`. If every single thread outputs **`24005a`** (ending in the even character `a`), the hardware-level `BD_PROCHOT` throttle flag has been completely bypassed.
+
+
 

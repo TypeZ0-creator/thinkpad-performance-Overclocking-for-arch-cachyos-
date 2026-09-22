@@ -12,9 +12,12 @@ An automation utility tool designed to resolve the hard 2.0 GHz ceiling lock on 
 * 🧹 **Maintenance:** Single-click utility to flush RAM cache layers and run storage SSD TRIM passes.
 
 ## 🚀 Quick Setup
+
 ```bash
-git clone https://github.com
-cd YOUR_REPO_NAME
+git clone https://github.com/TypeZ0-creator/thinkpad-performance-governor-for-arch-cachyos-.git
+cd thinkpad-performance-governor-for-arch-cachyos-
 chmod +x perf_toggle.sh
 sudo ./perf_toggle.sh
+```
+
 ```

@@ -4,12 +4,16 @@ An interactive performance toggle for Intel CPUs on CachyOS &amp; Arch Linux. Sa
 
 An automation utility tool designed to resolve the hard 2.0 GHz ceiling lock on Intel Core mobile processors running Linux.
 
+# ThinkPad Performance Governor for Arch & CachyOS
+
+An interactive command-line control panel dashboard designed to override aggressive ThinkPad hardware firmware limits (`BD_PROCHOT`) and unlock performance scaling.
+
 ## ✨ Features
-* 🔍 **Hardware Detection:** Automatically reads your exact machine model via motherboard firmware.
-* 🔋 **Power Save Mode:** Locks all threads at a strict 2.20 GHz cap to maximize battery and force dead-silent fans.
-* 🎮 **Gaming Mode:** Unlocks the native 4.40 GHz peak boost clock, enforces the `performance` governor, and optimizes virtual memory.
-* ⚡ **Overclock Tuning:** Clears motherboard register blocks (`0x1FC` BD_PROCHOT) and handles Lenovo-specific throttling quirks.
-* 🧹 **Maintenance:** Single-click utility to flush RAM cache layers and run storage SSD TRIM passes.
+* 🔍 **Motherboard Integration:** Reads your exact machine type (`dmidecode`).
+* 🔋 **Power Save Mode:** Locks all threads at a clean 2.20 GHz cap to enforce dead-silent laptop fans.
+* 🎮 **Gaming Profile:** Unlocks native 4.40 GHz limits, modifies virtual software memory swappiness, and overrides motherboard limits.
+* 🛡️ **Live Thermal Guard:** Actively tracks processor thermal sensors and auto-throttles the system down if it breaches 85°C.
+* 🔔 **Desktop Notifications:** Reports real-time structural profile switches seamlessly over your visual workspace layout via `notify-send`.
 
 ## 🚀 Quick Setup
 
@@ -20,4 +24,4 @@ chmod +x perf_toggle.sh
 sudo ./perf_toggle.sh
 ```
 
-```
+
